@@ -1,0 +1,91 @@
+# TS Cornucopia
+
+## Description
+
+The objective of this package is too agregate small pieces of code that are easy to be needed in many projects of different scope.
+
+The idea came after tinkering for some years with different approaches to sharing codes between my own projects resulting in different headaches. So why not simply bundle those inside a npm package? And why not just leave it open source in case this can help someone else... So, here we are.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#how-to-contribute)
+- [Tests](#tests)
+- [Credits](#credits)
+- [License](#mit-license)
+
+## Installation
+
+```
+npm install ts-cornucopia
+```
+
+## Usage
+
+To simplify this section, each separate function will have its own documentation file (linked on the name) and in here I only list them all with a brief explanation:
+
+- [executeOnFolder](docs/helpers/executeOnFolder.md): This function is used to iterate and execute a function with the path of every file of a folder.
+
+## How to Contribute
+
+If you believe you can make an improvement to this package by adding your own functions and fixing any bug you found please refer to these rules before submitting a pull request or opening an issue:
+
+- Fork from the branch dev to start work.
+- All code must conform the the lint patterns configured in .eslintrc.json.
+- Avoid using elses and tons of inner ifs like the plague, please familiarize with early returns/errors to keep to code easier to read.
+- All functions should be easy to understand by reading their code without the need of a big documentation.
+- Do not add dependencies to the package.json. To keep things always clear and unbloated this project shouldn't have dependencies besides the ones used for development in itself.
+- You are free to add your own credits at the start of a new function file if you want to, but all new codes must conform to the same [License](#mit-license) written by the end of this readme.
+- To test the lint conformity you can execute the command:
+
+```
+npm run lint
+```
+
+- All functions must have a test file using the pattern:
+  - For file: src/path/to/file.ts
+  - Expected Test file: src/tests/path/to/file.test.ts
+- Add a brief documentation file using the pattern:
+  - For file: src/path/to/file.ts
+  - Expected Doc file: docs/path/to/file.md
+- Every new method must be added to this readme with a link to its documentation file and a brief description in the [Usage](#usage) section.
+- All tests are expected to have at least the happy path and if any exception is written, a test to trigger it must be also added to the test file.
+- Don't forget to add a link to yourself in the [Credits](#credits) section of this readme.
+- Mostly everything is open to discussion. While I do not guarantee a change, I am always open to hearing other's opinions on this package.
+- It is always possible both due to lack of knowledge or new updates to JS/TS that some of these functions turn redundant or obsolete, please reach out.
+- No harassment of any kind will be tolerated.
+
+## Tests
+
+To run the tests simply execute this command:
+
+```
+npm run test
+```
+
+## Credits
+
+- [This Readme Tutorial](https://coding-boot-camp.github.io/full-stack/github/professional-readme-guide) for help with this readme file.
+
+## MIT License
+
+Copyright (c) 2023 Erik Marques Schroeder
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
