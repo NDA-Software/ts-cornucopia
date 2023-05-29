@@ -2,9 +2,9 @@
 
 ## Description
 
-The objective of this package is too agregate small pieces of code that are easy to be needed in many projects of different scope.
+The objective of this package is to aggregate small pieces of code that are easily needed in many projects of different scopes.
 
-The idea came after tinkering for some years with different approaches to sharing codes between my own projects resulting in different headaches. So why not simply bundle those inside a npm package? And why not just leave it open source in case this can help someone else... So, here we are.
+The idea came after tinkering for some years with different approaches to sharing codes between my own projects, resulting in different headaches. So why not simply bundle those inside an NPM package? And why not just leave it open source in case this can help someone else? So, here we are...
 
 ## Table of Contents
 
@@ -23,37 +23,37 @@ npm install ts-cornucopia
 
 ## Usage
 
-To simplify this section, each separate function will have its own documentation file (linked on the name) and in here I only list them all with a brief explanation:
+To simplify this section, each separate function will have its own documentation file (linked on the name), and here I only list them all with a brief explanation:
 
 - [executeOnFolder](docs/helpers/executeOnFolder.md): This function is used to iterate and execute a function with the path of every file of a folder.
 
 ## How to Contribute
 
-If you believe you can make an improvement to this package by adding your own functions and fixing any bug you found please refer to these rules before submitting a pull request or opening an issue:
+If you believe you can make an improvement to this package by adding your own functions and fixing any bugs you find, please refer to these rules before submitting a pull request or opening an issue:
 
 - Fork from the branch dev to start work.
-- All code must conform the the lint patterns configured in .eslintrc.json.
-- Avoid using elses and tons of inner ifs like the plague, please familiarize with early returns/errors to keep to code easier to read.
-- All functions should be easy to understand by reading their code without the need of a big documentation.
-- Do not add dependencies to the package.json. To keep things always clear and unbloated this project shouldn't have dependencies besides the ones used for development in itself.
+- All code must conform to the lint patterns configured in .eslintrc.json.
+- Avoid using elses and tons of inner ifs like the plague; please familiarize yourself with early returns/errors to keep the code easier to read.
+- All functions should be easy to understand by reading their code without the need for a big documentation.
+- Do not add dependencies to the package.json. To keep things always clear and unbloated, this project shouldn't have dependencies besides the ones used for development itself.
 - You are free to add your own credits at the start of a new function file if you want to, but all new codes must conform to the same [License](#mit-license) written by the end of this readme.
-- To test the lint conformity you can execute the command:
+- To test the lint conformity, you can execute the command:
 
 ```
 npm run lint
 ```
 
 - All functions must have a test file using the pattern:
-  - For file: src/path/to/file.ts
-  - Expected Test file: src/tests/path/to/file.test.ts
+    - For file: src/path/to/file.ts
+    - Expected test file: src/tests/path/to/file.test.ts
 - Add a brief documentation file using the pattern:
-  - For file: src/path/to/file.ts
-  - Expected Doc file: docs/path/to/file.md
+    - For file: src/path/to/file.ts
+    - Expected Doc file: docs/path/to/file.md
 - Every new method must be added to this readme with a link to its documentation file and a brief description in the [Usage](#usage) section.
-- All tests are expected to have at least the happy path and if any exception is written, a test to trigger it must be also added to the test file.
+- All tests are expected to have at least a happy path, and if any exception is written, a test to trigger it must also be added to the test file.
 - Don't forget to add a link to yourself in the [Credits](#credits) section of this readme.
-- Mostly everything is open to discussion. While I do not guarantee a change, I am always open to hearing other's opinions on this package.
-- It is always possible both due to lack of knowledge or new updates to JS/TS that some of these functions turn redundant or obsolete, please reach out.
+- Mostly everything is open to discussion. While I do not guarantee a change, I am always open to hearing other people's opinions on this package.
+- It is always possible, either due to a lack of knowledge or new updates to JS/TS that some of these functions become redundant or obsolete. Please reach out.
 - No harassment of any kind will be tolerated.
 
 ## Tests
