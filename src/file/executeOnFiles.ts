@@ -1,10 +1,8 @@
-import {
-  readdirSync, statSync,
-} from 'fs';
+import { readdirSync, statSync } from 'fs';
 
 type execCallback = (filePath: string) => any;
 
-const executeOnFolder = (folderPath: string, callback: execCallback) => {
+const executeOnFiles = (folderPath: string, callback: execCallback) => {
   const folder = readdirSync(folderPath);
 
   let responses: Array<any> = [];
@@ -13,7 +11,7 @@ const executeOnFolder = (folderPath: string, callback: execCallback) => {
     const filePath = `${folderPath}/${item}`;
 
     if (statSync(filePath).isDirectory()) {
-      responses = responses.concat(executeOnFolder(filePath, callback));
+      responses = responses.concat(executeOnFiles(filePath, callback));
 
       continue;
     }
@@ -24,4 +22,4 @@ const executeOnFolder = (folderPath: string, callback: execCallback) => {
   return responses;
 };
 
-export default executeOnFolder;
+export default executeOnFiles;
