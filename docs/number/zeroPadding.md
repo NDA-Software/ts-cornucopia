@@ -1,4 +1,4 @@
-# zeroPadding (value: number | string, quantity = number) - 1.0.0
+# zeroPadding (value: number | string, quantity: number) - 1.0.0
 
 ## Description
 
