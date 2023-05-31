@@ -1,7 +1,8 @@
 {
     "root": true,
     "extends": [
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
+        "airbnb"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -16,7 +17,8 @@
     "overrides": [
         {
             "files": [
-                "src/**/*.ts[x]"
+                "src/**/*.ts[x]",
+                "scripts/*.js"
             ]
         }
     ],

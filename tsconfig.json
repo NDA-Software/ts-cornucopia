@@ -26,6 +26,7 @@
     "noImplicitOverride": true,
   },
   "include": [
-    "./src"
+    "./src",
+    "./scripts"
   ]
 }
