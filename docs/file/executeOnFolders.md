@@ -21,9 +21,9 @@ This function is used to iterate inside a directory and its inner directories (r
 // /path/to/other.txt
 // /path/to/empty/folder/
 
-import { executeOnFiles } from "ts-cornucopia";
+import { executeOnFolder } from "ts-cornucopia/file";
 
-const results = executeOnFiles("/path", (path, folder) => [path, folder]);
+const results = executeOnFolder("/path", (path, folder) => [path, folder]);
 
 console.log(results);
 // [

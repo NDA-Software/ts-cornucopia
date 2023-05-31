@@ -29,6 +29,10 @@ To simplify this section, each separate function will have its own documentation
 
 - [executeOnFolders](docs/file/executeOnFolders.md): This function is used to iterate inside a directory and its inner directories (recursively) and then execute a function with the path of each folder found, including the root folder of the execution.
 
+- [randomRange](docs/number/randomRange.md): This function returns a random integer between two values.
+
+- [zeroPadding](docs/number/zeroPadding.md): This function adds "0"s as a padding to a string or number accordingly with its length.
+
 ## How to Contribute
 
 If you believe you can make an improvement to this package by adding your own functions and fixing any bugs you find, please refer to these rules before submitting a pull request or opening an issue:
