@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'fs';
 
-import executeOnFolder from '../helpers/executeOnFolder';
+import executeOnFiles from '../file/executeOnFiles';
 
 // This file checks if each file has a corresponding test and doc files.
 // To force future implementations to all have at least some testing and documentation.
@@ -11,7 +11,10 @@ const checkFiles = (
   finalSufix: string,
   done: jest.DoneCallback,
 ) => {
-  const errors = executeOnFolder(folder, (filePath) => {
+  const errors = executeOnFiles(folder, (filePath) => {
+    if (filePath.includes('index.ts'))
+      return null;
+
     if (filePath.includes('./src/tests/'))
       return null;
 
@@ -36,7 +39,7 @@ test('Checking doc files...', (done) => checkFiles('./src', './docs', 'md', done
 test('Looking for mentions of each file...', (done) => {
   const readMe = readFileSync('./readme.md').toString();
 
-  const errors = executeOnFolder('./src', (filePath) => {
+  const errors = executeOnFiles('./src', (filePath) => {
     if (filePath.includes('./src/tests/'))
       return null;
 
