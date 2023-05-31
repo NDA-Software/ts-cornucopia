@@ -25,7 +25,9 @@ npm install ts-cornucopia
 
 To simplify this section, each separate function will have its own documentation file (linked on the name), and here I only list them all with a brief explanation:
 
-- [executeOnFolder](docs/helpers/executeOnFolder.md): This function is used to iterate and execute a function with the path of every file of a folder.
+- [executeOnFiles](docs/file/executeOnFiles.md): This function is used to iterate inside a directory and its inner directories (recursively) and then execute a function with the path of each file found inside.
+
+- [executeOnFolders](docs/file/executeOnFolders.md): This function is used to iterate inside a directory and its inner directories (recursively) and then execute a function with the path of each folder found, including the root folder of the execution.
 
 ## How to Contribute
 
