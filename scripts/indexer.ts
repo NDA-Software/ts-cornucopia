@@ -19,7 +19,8 @@ executeOnFolders('./src', (path, folder) => {
   let content = '/* AUTO-GENERATED, DO NOT EDIT MANUALLY */\n';
 
   let importText = '';
-  let exportText = 'export default {\n';
+  let exportText = '';
+  let exportDefaultText = 'export default {\n';
   for (const fileName of folder) {
     if (fileName === 'index.ts')
       continue;
@@ -29,12 +30,15 @@ executeOnFolders('./src', (path, folder) => {
       name = fileName.substring(0, fileName.length - 3);
 
     importText += `import ${name} from './${name}';\n`;
-    exportText += `  ${name},\n`;
+
+    exportText += `export { default as ${name} } from './${name}';\n`;
+
+    exportDefaultText += `  ${name},\n`;
   }
 
-  exportText += '};\n';
+  exportDefaultText += '};\n';
 
-  content += `${importText}\n${exportText}`;
+  content += `${importText}\n${exportText}\n${exportDefaultText}`;
 
   writeFileSync(`${path}/index.ts`, content);
 
