@@ -25,15 +25,25 @@ npm install ts-cornucopia
 
 To simplify this section, each separate function will have its own documentation file (linked on the name), and here I only list them all with a brief explanation:
 
+### File
+
 - [executeOnFiles](docs/file/executeOnFiles.md): This function is used to iterate inside a directory and its inner directories (recursively) and then execute a function with the path of each file found inside.
 
 - [executeOnFolders](docs/file/executeOnFolders.md): This function is used to iterate inside a directory and its inner directories (recursively) and then execute a function with the path of each folder found, including the root folder of the execution.
+
+### Number
 
 - [numberFormat](docs/number/numberFormat.md): This function converts a number into a string and adds a separator every three integer digits.
 
 - [randomRange](docs/number/randomRange.md): This function returns a random integer between two values.
 
 - [zeroPadding](docs/number/zeroPadding.md): This function adds "0"s as a padding to a string or number accordingly with its length.
+
+### String
+
+- [cammelToSpace](docs/string/cammelToSpace.md): This function detects cammelcase and adds a space behind every word, it also adds uppercase to the first letter of the first word.
+
+- [firstToUppercase](docs/string/firstToUppercase.md): This function returns the given string with the changed first letter to be uppercase.
 
 ## How to Contribute
 
