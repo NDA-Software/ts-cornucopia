@@ -1,4 +1,4 @@
-import { firstToUppercase } from '../../string';
+import { firstToUppercase } from '../../src/string';
 
 test('Testing firstToUppercase.', () => {
   expect(firstToUppercase('test')).toBe('Test');

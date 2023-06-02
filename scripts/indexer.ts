@@ -2,20 +2,7 @@ import { writeFileSync, statSync } from 'fs';
 
 import executeOnFolders from '../src/file/executeOnFolders';
 
-const foldersIgnoredInSrc = [
-  'tests',
-];
-
-const pathsToIgnore = foldersIgnoredInSrc.map((item) => `./src/${item}`);
-
 executeOnFolders('./src', (path, folder) => {
-  for (const ignoredPath of pathsToIgnore)
-    if (path.includes(ignoredPath))
-      return false;
-
-  if (path === './src')
-    folder = folder.filter((item) => !foldersIgnoredInSrc.includes(item));
-
   let content = '/* AUTO-GENERATED, DO NOT EDIT MANUALLY */\n';
 
   let importText = '';

@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'fs';
 
-import executeOnFiles from '../file/executeOnFiles';
+import executeOnFiles from '../src/file/executeOnFiles';
 
 // This file checks if each file has a corresponding test and doc files.
 // To force future implementations to all have at least some testing and documentation.
@@ -13,9 +13,6 @@ const checkFiles = (
 ) => {
   const errors = executeOnFiles(folder, (filePath) => {
     if (filePath.includes('index.ts'))
-      return null;
-
-    if (filePath.includes('./src/tests/'))
       return null;
 
     filePath = `${destinyFolder}/${filePath.substring(6, filePath.length - 3)}.${finalSufix}`;
@@ -32,7 +29,7 @@ const checkFiles = (
   return done();
 };
 
-test('Checking test files...', (done) => checkFiles('./src', './src/tests', 'test.ts', done));
+test('Checking test files...', (done) => checkFiles('./src', './tests', 'test.ts', done));
 
 test('Checking doc files...', (done) => checkFiles('./src', './docs', 'md', done));
 
@@ -40,9 +37,6 @@ test('Looking for mentions of each file...', (done) => {
   const readMe = readFileSync('./readme.md').toString();
 
   const errors = executeOnFiles('./src', (filePath) => {
-    if (filePath.includes('./src/tests/'))
-      return null;
-
     const lastFolder = filePath.lastIndexOf('/') + 1;
     const extensionPoint = filePath.lastIndexOf('.');
 

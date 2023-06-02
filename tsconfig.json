@@ -2,7 +2,7 @@
   "compilerOptions": {
     "incremental": true,
     "tsBuildInfoFile": "./.temp/.tsbuildinfo",
-    "target": "es2016",
+    "target": "es2022",
     "module": "commonjs",
     "paths": {},
     "outDir": "./.build",
@@ -27,6 +27,7 @@
   },
   "include": [
     "./src",
-    "./scripts"
+    "./scripts",
+    "./tests"
   ]
 }

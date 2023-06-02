@@ -1,4 +1,4 @@
-import { numberFormat } from '../../number';
+import { numberFormat } from '../../src/number';
 
 test('Testing numberFormat.', () => {
   expect(numberFormat(0)).toBe('0.00');

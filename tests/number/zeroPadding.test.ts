@@ -1,4 +1,4 @@
-import { zeroPadding } from '../../number';
+import { zeroPadding } from '../../src/number';
 
 test('Testing zeroPadding.', () => {
   expect(zeroPadding(10, 3)).toBe('010');
