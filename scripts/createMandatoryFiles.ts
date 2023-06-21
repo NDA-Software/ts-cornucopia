@@ -3,6 +3,7 @@ import { existsSync, writeFileSync } from 'fs';
 import { executeOnFiles, proccessTemplate } from '../src/file';
 
 const testPath = './tests';
+const docPath = './docs';
 
 executeOnFiles('./src', (filePath) => {
   if (filePath.includes('index.ts'))
@@ -18,6 +19,13 @@ executeOnFiles('./src', (filePath) => {
     const testContent = proccessTemplate('./scripts/templates/baseTestFile.txt', { fileName, domain });
 
     writeFileSync(testFile, testContent);
+  }
+
+  const docFile = `${docPath}${partialFilePath}.md`;
+  if (!existsSync(docFile)) {
+    const docContent = proccessTemplate('./scripts/templates/baseDocFile.txt', { fileName, domain });
+
+    writeFileSync(docFile, docContent);
   }
 
   return true;

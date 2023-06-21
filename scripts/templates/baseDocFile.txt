@@ -1,0 +1,24 @@
+# {{FILENAME}} ({{PARAMETER}}: {{PARAMETERTYPE}}) - {{STARTINGVERSION}}
+
+## Description
+
+{{DESCRIPTION}}
+
+## Parameters
+
+- {{PARAMETER}}: {{PARAMETERDESCRIPTION}}
+
+## Returned Value
+
+- {{RETURNTYPE}}: Between min and max, inclusive.
+
+## Usage:
+
+```
+import { {{FILENAME}} } from "ts-cornucopia/{{DOMAIN}}";
+
+const result = {{FILENAME}}({{EXAMPLEPARAMETERS}});
+
+console.log(result);
+// {{EXAMPLERESULT}}
+```
