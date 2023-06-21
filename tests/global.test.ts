@@ -29,9 +29,37 @@ const checkFiles = (
   return done();
 };
 
+const termsToCheck = [
+  { name: 'PARAMETER', errorName: 'parameters' },
+  { name: 'PARAMETERTYPE', errorName: "parameters' typing" },
+  { name: 'STARTINGVERSION', errorName: 'starting version' },
+  { name: 'DESCRIPTION', errorName: 'description' },
+  { name: 'PARAMETERDESCRIPTION', errorName: "parameters' description" },
+  { name: 'RETURNTYPE', errorName: 'return typing' },
+  { name: 'EXAMPLEPARAMETERS', errorName: 'example parameters' },
+  { name: 'EXAMPLERESULT', errorName: 'example result' },
+];
+
 test('Checking test files...', (done) => checkFiles('./src', './tests', 'test.ts', done));
 
 test('Checking doc files...', (done) => checkFiles('./src', './docs', 'md', done));
+
+test('Checking unimplemented information in doc files...', (done: jest.DoneCallback) => {
+  const errors : Array<string> = [];
+
+  executeOnFiles('./docs', (filePath) => {
+    const text = readFileSync(filePath);
+
+    for (const term of termsToCheck)
+      if (text.includes(term.name))
+        errors.push(`Missing ${term.errorName} where {{${term.name}}} is written on file '${filePath}'`);
+  });
+
+  if (errors.length > 0)
+    return done(errors);
+
+  return null;
+});
 
 test('Looking for mentions of each file...', (done) => {
   const readMe = readFileSync('./readme.md').toString();
