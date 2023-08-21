@@ -38,8 +38,6 @@ To simplify this section, each separate function will have its own documentation
 
 - [randomRange](docs/number/randomRange.md): This function returns a random integer between two values.
 
-- [zeroPadding](docs/number/zeroPadding.md): This function adds "0"s as a padding to a string or number accordingly with its length.
-
 ### String
 
 - [cammelToSpace](docs/string/cammelToSpace.md): This function detects cammelcase and adds a space behind every word, it also adds uppercase to the first letter of the first word.
