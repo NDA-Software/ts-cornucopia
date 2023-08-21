@@ -62,7 +62,7 @@ test('Checking unimplemented information in doc files...', (done: jest.DoneCallb
 });
 
 test('Looking for mentions of each file...', (done) => {
-  const readMe = readFileSync('./readme.md').toString();
+  const readMe = readFileSync('./README.md').toString();
 
   const errors = executeOnFiles('./src', (filePath) => {
     const lastFolder = filePath.lastIndexOf('/') + 1;
@@ -76,7 +76,7 @@ test('Looking for mentions of each file...', (done) => {
     const filePathCheck = `- [${fileName}](docs/${filePath.substring(6, extensionPoint)}.md)`;
 
     if (!readMe.includes(filePathCheck))
-      return `Missing mention of '${filePathCheck}' in readme.md.`;
+      return `Missing mention of '${filePathCheck}' in README.md.`;
 
     return null;
   }).filter((item) => item !== null);
