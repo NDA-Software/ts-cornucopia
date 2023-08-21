@@ -31,6 +31,8 @@ To simplify this section, each separate function will have its own documentation
 
 - [executeOnFolders](docs/file/executeOnFolders.md): This function is used to iterate inside a directory and its inner directories (recursively) and then execute a function with the path of each folder found, including the root folder of the execution.
 
+- [proccessTemplate](docs/file/proccessTemplate.md): This function reads a file, replaces all iterations of named placeholders with values passed.
+
 ### Number
 
 - [numberFormat](docs/number/numberFormat.md): This function converts a number into a string and adds a separator every three integer digits.

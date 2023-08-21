@@ -4,9 +4,5 @@
   "transform": {
     "^.+\\.(j|t)sx?$": "ts-jest"
   },
-  "testPathIgnorePatterns": [
-    "/node_modules/",
-    "/src/helpers/",
-    "/.build/"
-  ]
+  "testPathIgnorePatterns": ["/node_modules/", "/src/helpers/", "/.build/"]
 }

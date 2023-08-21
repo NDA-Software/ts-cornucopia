@@ -58,7 +58,7 @@ test('Checking unimplemented information in doc files...', (done: jest.DoneCallb
   if (errors.length > 0)
     return done(errors);
 
-  return null;
+  return done();
 });
 
 test('Looking for mentions of each file...', (done) => {
