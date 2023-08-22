@@ -30,7 +30,7 @@ test('Testing executeOnFolders.', () => {
   path += '/test.txt';
   appendFileSync(path, '');
 
-  const result = executeOnFolders('./.temp/path', (localPath, folder) => [localPath, folder]);
+  const result = executeOnFolders('./.temp/path/', (localPath, folder) => [localPath, folder]);
 
   rmSync('./.temp/path/', { recursive: true });
 
