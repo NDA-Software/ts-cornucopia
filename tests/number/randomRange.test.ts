@@ -1,19 +1,19 @@
 import { randomRange } from '../../src/number';
 
 test('Testing randomRange.', () => {
-  let smallerResult = 9999;
-  let biggerResult = 0;
+    let smallerResult = 9999;
+    let biggerResult = 0;
 
-  for (let i = 0; i < 1000; i++) {
-    const rand = randomRange(0, 50);
+    for (let i = 0; i < 1000; i++) {
+        const rand = randomRange(0, 50);
 
-    if (smallerResult > rand)
-      smallerResult = rand;
+        if (smallerResult > rand)
+            smallerResult = rand;
 
-    if (biggerResult < rand)
-      biggerResult = rand;
-  }
+        if (biggerResult < rand)
+            biggerResult = rand;
+    }
 
-  expect(smallerResult).toBe(0);
-  expect(biggerResult).toBe(50);
+    expect(smallerResult).toBe(0);
+    expect(biggerResult).toBe(50);
 });

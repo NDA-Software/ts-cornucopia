@@ -8,7 +8,7 @@ export { default as executeOnFolders } from './executeOnFolders';
 export { default as proccessTemplate } from './proccessTemplate';
 
 export default {
-  executeOnFiles,
-  executeOnFolders,
-  proccessTemplate,
+    executeOnFiles,
+    executeOnFolders,
+    proccessTemplate
 };

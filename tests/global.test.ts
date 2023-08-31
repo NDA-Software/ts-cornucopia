@@ -6,38 +6,38 @@ import executeOnFiles from '../src/file/executeOnFiles';
 // To force future implementations to all have at least some testing and documentation.
 
 const checkFiles = (
-  folder: string,
-  destinyFolder: string,
-  finalSufix: string,
-  done: jest.DoneCallback,
-) => {
-  const errors = executeOnFiles(folder, (filePath) => {
-    if (filePath.includes('index.ts'))
-      return null;
+    folder: string,
+    destinyFolder: string,
+    finalSufix: string,
+    done: jest.DoneCallback
+): any | null => {
+    const errors = executeOnFiles(folder, (filePath) => {
+        if (filePath.includes('index.ts'))
+            return null;
 
-    filePath = `${destinyFolder}/${filePath.substring(6, filePath.length - 3)}.${finalSufix}`;
+        filePath = `${destinyFolder}/${filePath.substring(6, filePath.length - 3)}.${finalSufix}`;
 
-    if (!existsSync(filePath))
-      return `Missing file: '${filePath}'.`;
+        if (!existsSync(filePath))
+            return `Missing file: '${filePath}'.`;
 
-    return null;
-  }).filter((item) => item !== null);
+        return null;
+    }).filter((item) => item !== null);
 
-  if (errors.length > 0)
-    return done(errors);
+    if (errors.length > 0)
+        return done(errors);
 
-  return done();
+    return done();
 };
 
 const termsToCheck = [
-  { name: 'PARAMETER', errorName: 'parameters' },
-  { name: 'PARAMETERTYPE', errorName: "parameters' typing" },
-  { name: 'STARTINGVERSION', errorName: 'starting version' },
-  { name: 'DESCRIPTION', errorName: 'description' },
-  { name: 'PARAMETERDESCRIPTION', errorName: "parameters' description" },
-  { name: 'RETURNTYPE', errorName: 'return typing' },
-  { name: 'EXAMPLEPARAMETERS', errorName: 'example parameters' },
-  { name: 'EXAMPLERESULT', errorName: 'example result' },
+    { name: 'PARAMETER', errorName: 'parameters' },
+    { name: 'PARAMETERTYPE', errorName: "parameters' typing" },
+    { name: 'STARTINGVERSION', errorName: 'starting version' },
+    { name: 'DESCRIPTION', errorName: 'description' },
+    { name: 'PARAMETERDESCRIPTION', errorName: "parameters' description" },
+    { name: 'RETURNTYPE', errorName: 'return typing' },
+    { name: 'EXAMPLEPARAMETERS', errorName: 'example parameters' },
+    { name: 'EXAMPLERESULT', errorName: 'example result' }
 ];
 
 test('Checking test files...', (done) => checkFiles('./src', './tests', 'test.ts', done));
@@ -45,44 +45,44 @@ test('Checking test files...', (done) => checkFiles('./src', './tests', 'test.ts
 test('Checking doc files...', (done) => checkFiles('./src', './docs', 'md', done));
 
 test('Checking unimplemented information in doc files...', (done: jest.DoneCallback) => {
-  const errors : Array<string> = [];
+    const errors: string[] = [];
 
-  executeOnFiles('./docs', (filePath) => {
-    const text = readFileSync(filePath);
+    executeOnFiles('./docs', (filePath) => {
+        const text = readFileSync(filePath);
 
-    for (const term of termsToCheck)
-      if (text.includes(term.name))
-        errors.push(`Missing ${term.errorName} where {{${term.name}}} is written on file '${filePath}'`);
-  });
+        for (const term of termsToCheck)
+            if (text.includes(term.name))
+                errors.push(`Missing ${term.errorName} where {{${term.name}}} is written on file '${filePath}'`);
+    });
 
-  if (errors.length > 0)
-    return done(errors);
+    if (errors.length > 0)
+        return done(errors);
 
-  return done();
+    return done();
 });
 
 test('Looking for mentions of each file...', (done) => {
-  const readMe = readFileSync('./README.md').toString();
+    const readMe = readFileSync('./README.md').toString();
 
-  const errors = executeOnFiles('./src', (filePath) => {
-    const lastFolder = filePath.lastIndexOf('/') + 1;
-    const extensionPoint = filePath.lastIndexOf('.');
+    const errors = executeOnFiles('./src', (filePath) => {
+        const lastFolder = filePath.lastIndexOf('/') + 1;
+        const extensionPoint = filePath.lastIndexOf('.');
 
-    const fileName = filePath.substring(lastFolder, extensionPoint);
+        const fileName = filePath.substring(lastFolder, extensionPoint);
 
-    if (fileName === 'index')
-      return null;
+        if (fileName === 'index')
+            return null;
 
-    const filePathCheck = `- [${fileName}](docs/${filePath.substring(6, extensionPoint)}.md)`;
+        const filePathCheck = `- [${fileName}](docs/${filePath.substring(6, extensionPoint)}.md)`;
 
-    if (!readMe.includes(filePathCheck))
-      return `Missing mention of '${filePathCheck}' in README.md.`;
+        if (!readMe.includes(filePathCheck))
+            return `Missing mention of '${filePathCheck}' in README.md.`;
 
-    return null;
-  }).filter((item) => item !== null);
+        return null;
+    }).filter((item) => item !== null);
 
-  if (errors.length > 0)
-    return done(errors);
+    if (errors.length > 0)
+        return done(errors);
 
-  return done();
+    return done();
 });

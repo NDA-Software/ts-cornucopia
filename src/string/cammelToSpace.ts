@@ -1,11 +1,11 @@
 import firstToUppercase from './firstToUppercase';
 
-const cammelToSpace = (text: string, overrideSeparator = ' ') => {
-  text = text.replace(/([A-Z])/g, `${overrideSeparator}$1`).trim();
+const cammelToSpace = (text: string, overrideSeparator = ' '): string => {
+    text = text.replace(/([A-Z])/g, `${overrideSeparator}$1`).trim();
 
-  text = firstToUppercase(text);
+    text = firstToUppercase(text);
 
-  return text;
+    return text;
 };
 
 export default cammelToSpace;

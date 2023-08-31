@@ -6,6 +6,6 @@ export { default as cammelToSpace } from './cammelToSpace';
 export { default as firstToUppercase } from './firstToUppercase';
 
 export default {
-  cammelToSpace,
-  firstToUppercase,
+    cammelToSpace,
+    firstToUppercase
 };

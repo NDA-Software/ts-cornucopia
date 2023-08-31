@@ -1,40 +1,40 @@
 import {
-  mkdirSync, existsSync, appendFileSync, rmSync,
+    mkdirSync, existsSync, appendFileSync, rmSync
 } from 'fs';
 
 import { executeOnFiles } from '../../src/file';
 
-const createDir = (folderPath: string) => {
-  if (!existsSync(folderPath))
-    mkdirSync(folderPath);
+const createDir = (folderPath: string): void => {
+    if (!existsSync(folderPath))
+        mkdirSync(folderPath);
 };
 
 test('Testing executeOnFiles.', () => {
-  let path = './.temp';
-  createDir(path);
+    let path = './.temp';
+    createDir(path);
 
-  path += '/path';
-  createDir(path);
+    path += '/path';
+    createDir(path);
 
-  path += '/to';
-  createDir(path);
+    path += '/to';
+    createDir(path);
 
-  appendFileSync(`${path}/other.txt`, '');
+    appendFileSync(`${path}/other.txt`, '');
 
-  createDir(`${path}/empty`);
-  createDir(`${path}/empty/folder`);
+    createDir(`${path}/empty`);
+    createDir(`${path}/empty/folder`);
 
-  path += '/file';
-  createDir(path);
+    path += '/file';
+    createDir(path);
 
-  path += '/test.txt';
-  appendFileSync(path, '');
+    path += '/test.txt';
+    appendFileSync(path, '');
 
-  const result = executeOnFiles('./.temp/path/', (filePath) => filePath);
+    const result = executeOnFiles('./.temp/path/', (filePath) => filePath);
 
-  rmSync('./.temp/path/', { recursive: true });
+    rmSync('./.temp/path/', { recursive: true });
 
-  expect(result.length).toBe(2);
-  expect(result[0]).toBe('./.temp/path/to/file/test.txt');
-  expect(result[1]).toBe('./.temp/path/to/other.txt');
+    expect(result.length).toBe(2);
+    expect(result[0]).toBe('./.temp/path/to/file/test.txt');
+    expect(result[1]).toBe('./.temp/path/to/other.txt');
 });

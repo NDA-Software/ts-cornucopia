@@ -8,7 +8,7 @@ export { default as number } from './number';
 export { default as string } from './string';
 
 export default {
-  file,
-  number,
-  string,
+    file,
+    number,
+    string
 };

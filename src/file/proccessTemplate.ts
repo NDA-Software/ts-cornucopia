@@ -1,13 +1,13 @@
 import fs from 'fs';
 
-const proccessTemplate = (templateFile: string, dataToOverwrite: Record<string, string> = {}) => {
-  let templateText = fs.readFileSync(templateFile).toString();
+const proccessTemplate = (templateFile: string, dataToOverwrite: Record<string, string> = {}): string => {
+    let templateText = fs.readFileSync(templateFile).toString();
 
-  for (const key in dataToOverwrite)
-    if (Object.hasOwn(dataToOverwrite, key) as boolean)
-      templateText = templateText.replaceAll(`{{${key.toUpperCase()}}}`, dataToOverwrite[key] as string);
+    for (const key in dataToOverwrite)
+        if (Object.hasOwn(dataToOverwrite, key))
+            templateText = templateText.replaceAll(`{{${key.toUpperCase()}}}`, dataToOverwrite[key]);
 
-  return templateText;
+    return templateText;
 };
 
 export default proccessTemplate;

@@ -6,6 +6,6 @@ export { default as numberFormat } from './numberFormat';
 export { default as randomRange } from './randomRange';
 
 export default {
-  numberFormat,
-  randomRange,
+    numberFormat,
+    randomRange
 };
