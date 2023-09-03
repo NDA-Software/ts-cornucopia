@@ -42,11 +42,14 @@ export default [{
     plugins: [dts()]
 },
 {
+    input: '.build/types/scripts/index.d.ts',
+    output: [{ file: '.build/scripts/index.d.ts', format: 'esm' }],
+    plugins: [dts()]
+},
+{
     input: '.build/types/string/index.d.ts',
     output: [{ file: '.build/string/index.d.ts', format: 'esm' }],
-    plugins: [
-        dts()
-    ]
+    plugins: [dts()]
 },
 {
     input: './.build/index.js',

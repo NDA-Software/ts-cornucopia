@@ -1,14 +1,17 @@
 /* AUTO-GENERATED, DO NOT EDIT MANUALLY */
 import file from './file';
 import number from './number';
+import scripts from './scripts';
 import string from './string';
 
 export { default as file } from './file';
 export { default as number } from './number';
+export { default as scripts } from './scripts';
 export { default as string } from './string';
 
 export default {
     file,
     number,
+    scripts,
     string
 };
