@@ -9,7 +9,7 @@ export interface indexerOptions {
     ignoredFiles?: string[] | null;
     overwriteBaseText?: string | null;
     indexExtension?: 'ts' | 'js';
-    nameCasing?: 'camelCase' | 'pascalCase';
+    nameCasing?: 'camelCase' | 'PascalCase';
 }
 
 export default function (
