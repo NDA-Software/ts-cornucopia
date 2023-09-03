@@ -34,7 +34,7 @@ test('Testing indexer.', () => {
 
     mkdirSync(`${path}subFolder`, { recursive: true });
 
-    indexer({ path });
+    indexer(path);
 
     let result = readFileSync(`${path}index.ts`).toString();
 

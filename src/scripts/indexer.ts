@@ -5,21 +5,21 @@ import { executeOnFolders } from '../file';
 
 const baseText = '/* AUTO-GENERATED, DO NOT EDIT MANUALLY */';
 
-export interface indexerParams {
-    path: string | string[];
+export interface indexerOptions {
     ignoredFiles?: string[] | null;
     overwriteBaseText?: string | null;
     indexExtension?: 'ts' | 'js';
     nameCasing?: 'camelCase' | 'pascalCase';
 }
 
-export default function ({
-    path,
-    ignoredFiles = null,
-    overwriteBaseText = null,
-    indexExtension = 'ts',
-    nameCasing = 'camelCase'
-}: indexerParams): void {
+export default function (
+    path: string | string[],
+    {
+        ignoredFiles = null,
+        overwriteBaseText = null,
+        indexExtension = 'ts',
+        nameCasing = 'camelCase'
+    }: indexerOptions = {}): void {
     if (typeof path === 'string')
         path = [path];
 

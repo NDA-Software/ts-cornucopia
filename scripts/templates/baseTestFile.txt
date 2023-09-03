@@ -1,7 +1,7 @@
 import { {{FILENAME}} } from '../../src/{{DOMAIN}}';
 
 test('Testing {{FILENAME}}.', () => {
-  console.log({{FILENAME}});
+    console.log({{FILENAME}});
 
-  throw new Error('PENDING IMPLEMENTATION.');
+    throw new Error('PENDING IMPLEMENTATION.');
 });
