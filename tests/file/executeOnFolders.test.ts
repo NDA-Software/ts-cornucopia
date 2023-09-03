@@ -6,17 +6,12 @@ import { executeOnFolders } from '../../src/file';
 
 const createDir = (folderPath: string): void => {
     if (!existsSync(folderPath))
-        mkdirSync(folderPath);
+        mkdirSync(folderPath, { recursive: true });
 };
 
 test('Testing executeOnFolders.', () => {
-    let path = './.temp';
-    createDir(path);
+    let path = './.temp/path/to';
 
-    path += '/path';
-    createDir(path);
-
-    path += '/to';
     createDir(path);
 
     appendFileSync(`${path}/other.txt`, '');
