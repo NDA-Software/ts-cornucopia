@@ -73,7 +73,7 @@ test('Looking for mentions of each file...', (done) => {
         if (fileName === 'index')
             return null;
 
-        const filePathCheck = `- [${fileName}](docs/${filePath.substring(6, extensionPoint)}.md)`;
+        const filePathCheck = `-   [${fileName}](docs/${filePath.substring(6, extensionPoint)}.md)`;
 
         if (!readMe.includes(filePathCheck))
             return `Missing mention of '${filePathCheck}' in README.md.`;
