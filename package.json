@@ -1,10 +1,16 @@
 {
     "name": "ts-cornucopia",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "A package to organize small pieces of code easy to use in many projects.",
     "repository": "git@github.com:HerrTuring/ts-cornucopia.git",
     "author": "Herr Turing <admin@nda.software>",
     "license": "MIT",
+    "keywords": [
+        "helper",
+        "typescript",
+        "utils",
+        "functions"
+    ],
     "scripts": {
         "build": "rollup -c",
         "watch": "rollup -c -w",
@@ -124,5 +130,6 @@
             "/src/",
             "/.build/"
         ]
-    }
+    },
+    "funding": "https://www.buymeacoffee.com/herrturing"
 }
