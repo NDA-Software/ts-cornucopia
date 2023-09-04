@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'fs';
 
-import executeOnFiles from '../src/file/executeOnFiles';
+import { executeOnFiles } from '../.build/file';
 
 // This file checks if each file has a corresponding test and doc files.
 // To force future implementations to all have at least some testing and documentation.

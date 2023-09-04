@@ -1,4 +1,4 @@
-import { {{FILENAME}} } from '../../src/{{DOMAIN}}';
+import { {{FILENAME}} } from '../../.build/{{DOMAIN}}';
 
 test('Testing {{FILENAME}}.', () => {
     console.log({{FILENAME}});

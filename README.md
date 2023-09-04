@@ -50,8 +50,10 @@ To simplify this section, each separate function will have its own documentation
 
 ## Tests
 
-To run the tests simply execute this command:
+To guarantee conformity after bundling the test script runs only with the bundled codes. Which means you have to build before running it:
 
 ```
+npm run build
+
 npm run test
 ```

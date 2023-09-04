@@ -1,6 +1,6 @@
 import { writeFileSync, existsSync, mkdirSync } from 'fs';
 
-import { proccessTemplate } from '../../src/file';
+import { proccessTemplate } from '../../.build/file';
 
 test('Testing proccessTemplate.', () => {
     let path = './.temp';

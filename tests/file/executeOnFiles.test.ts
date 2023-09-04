@@ -2,7 +2,7 @@ import {
     mkdirSync, existsSync, appendFileSync, rmSync
 } from 'fs';
 
-import { executeOnFiles } from '../../src/file';
+import { executeOnFiles } from '../../.build/file';
 
 const createDir = (folderPath: string): void => {
     if (!existsSync(folderPath))
