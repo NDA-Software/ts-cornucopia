@@ -4,8 +4,8 @@ const proccessTemplate = (templateFile: string, dataToOverwrite: Record<string, 
     let templateText = fs.readFileSync(templateFile).toString();
 
     for (const key in dataToOverwrite)
-        if (Object.hasOwn(dataToOverwrite, key))
-            templateText = templateText.replaceAll(`{{${key.toUpperCase()}}}`, dataToOverwrite[key]);
+        if (Object.hasOwn(dataToOverwrite, key) && key !== undefined)
+            templateText = templateText.replaceAll(`{{${key.toUpperCase()}}}`, dataToOverwrite[key] ?? '');
 
     return templateText;
 };

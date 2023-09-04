@@ -1,7 +1,7 @@
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
-import typescript from '@rollup/plugin-typescript';
+import typescript from 'rollup-plugin-typescript2';
 import dts from 'rollup-plugin-dts';
 import del from 'rollup-plugin-delete';
 
@@ -17,7 +17,7 @@ export default [{
     plugins: [
         typescript({
             tsconfig: 'tsconfig.json',
-            declarationDir: '.build/types/',
+            outDir: '.build/',
             include: [
                 './src/**/*.ts'
             ]
@@ -26,28 +26,29 @@ export default [{
         nodeResolve(),
         commonjs()
     ]
-}, {
-    input: '.build/types/index.d.ts',
+},
+{
+    input: '.build/src/index.d.ts',
     output: [{ file: '.build/index.d.ts', format: 'esm' }],
     plugins: [dts()]
 },
 {
-    input: '.build/types/file/index.d.ts',
+    input: '.build/src/file/index.d.ts',
     output: [{ file: '.build/file/index.d.ts', format: 'esm' }],
     plugins: [dts()]
 },
 {
-    input: '.build/types/number/index.d.ts',
+    input: '.build/src/number/index.d.ts',
     output: [{ file: '.build/number/index.d.ts', format: 'esm' }],
     plugins: [dts()]
 },
 {
-    input: '.build/types/scripts/index.d.ts',
+    input: '.build/src/scripts/index.d.ts',
     output: [{ file: '.build/scripts/index.d.ts', format: 'esm' }],
     plugins: [dts()]
 },
 {
-    input: '.build/types/string/index.d.ts',
+    input: '.build/src/string/index.d.ts',
     output: [{ file: '.build/string/index.d.ts', format: 'esm' }],
     plugins: [dts()]
 },
@@ -57,7 +58,7 @@ export default [{
         file: './.temp/dummy.txt'
     },
     plugins: [
-        del({ targets: '.build/types' })
+        del({ targets: '.build/src' })
     ],
     onwarn(warning, warn) {
         if (warning.code === 'UNRESOLVED_IMPORT')
