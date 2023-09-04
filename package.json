@@ -17,7 +17,6 @@
         "lint": "eslint src --ext .ts,.tsx src",
         "lint-fix": "eslint src --ext .ts,.tsx src --fix",
         "test": "jest",
-        "indexer": "ts-node ./scripts/indexer.ts",
         "create-mandatory-files": "ts-node ./scripts/createMandatoryFiles.ts"
     },
     "files": [
@@ -67,6 +66,7 @@
         "rollup": "^3.26.2",
         "rollup-plugin-delete": "^2.0.0",
         "rollup-plugin-dts": "^5.3.0",
+        "rollup-plugin-indexer": "^1.0.0",
         "rollup-plugin-peer-deps-external": "^2.2.4",
         "rollup-plugin-typescript2": "^0.35.0",
         "ts-jest": "^29.1.1",
@@ -93,6 +93,9 @@
         "parserOptions": {
             "project": "./tsconfig.json"
         },
+        "ignorePatterns": [
+            "rollup.config.mjs"
+        ],
         "rules": {
             "@typescript-eslint/semi": "off",
             "semi": [

@@ -4,6 +4,7 @@ import nodeResolve from '@rollup/plugin-node-resolve';
 import typescript from 'rollup-plugin-typescript2';
 import dts from 'rollup-plugin-dts';
 import del from 'rollup-plugin-delete';
+import indexer from "rollup-plugin-indexer";
 
 export default [{
     input: 'src/index.ts',
@@ -15,6 +16,7 @@ export default [{
         format: 'esm'
     }],
     plugins: [
+        indexer("./src"),
         typescript({
             tsconfig: 'tsconfig.json',
             outDir: '.build/',
