@@ -5,6 +5,8 @@ import { executeOnFiles } from '../.build/file';
 // This file checks if each file has a corresponding test and doc files.
 // To force future implementations to all have at least some testing and documentation.
 
+const executionOptions = { recursive: true };
+
 const checkFiles = (
     folder: string,
     destinyFolder: string,
@@ -21,7 +23,7 @@ const checkFiles = (
             return `Missing file: '${filePath}'.`;
 
         return null;
-    }).filter((item) => item !== null);
+    }, executionOptions).filter((item) => item !== null);
 
     if (errors.length > 0)
         return done(errors);
@@ -53,7 +55,7 @@ test('Checking unimplemented information in doc files...', (done: jest.DoneCallb
         for (const term of termsToCheck)
             if (text.includes(term.name))
                 errors.push(`Missing ${term.errorName} where {{${term.name}}} is written on file '${filePath}'`);
-    });
+    }, executionOptions);
 
     if (errors.length > 0)
         return done(errors);

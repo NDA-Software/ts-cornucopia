@@ -10,14 +10,11 @@ const createDir = (folderPath: string): void => {
 };
 
 test('Testing executeOnFolders.', () => {
-    let path = './.temp/path/to';
+    let path = './.temp/executeOnFolders/';
 
-    createDir(path);
+    createDir(`${path}/empty/folder`);
 
     appendFileSync(`${path}/other.txt`, '');
-
-    createDir(`${path}/empty`);
-    createDir(`${path}/empty/folder`);
 
     path += '/file';
     createDir(path);
@@ -25,23 +22,28 @@ test('Testing executeOnFolders.', () => {
     path += '/test.txt';
     appendFileSync(path, '');
 
-    const result = executeOnFolders('./.temp/path/', (localPath, folder) => [localPath, folder]);
+    const result = executeOnFolders('./.temp/executeOnFolders/', (localPath, folder) => [localPath, folder]);
 
-    rmSync('./.temp/path/', { recursive: true });
+    expect(result.length).toBe(1);
+    expect(result[0][0]).toBe('./.temp/executeOnFolders');
+    expect(result[0][1][0]).toBe('empty');
+    expect(result[0][1][1]).toBe('file');
+    expect(result[0][1][2]).toBe('other.txt');
 
-    expect(result.length).toBe(5);
-    expect(result[0][0]).toBe('./.temp/path/to/empty/folder');
-    expect(result[1][0]).toBe('./.temp/path/to/empty');
-    expect(result[1][1][0]).toBe('folder');
+    const recursiveResult = executeOnFolders('./.temp/executeOnFolders/', (localPath, folder) => [localPath, folder], { recursive: true });
 
-    expect(result[2][0]).toBe('./.temp/path/to/file');
-    expect(result[2][1][0]).toBe('test.txt');
+    rmSync('./.temp/executeOnFolders/', { recursive: true });
 
-    expect(result[3][0]).toBe('./.temp/path/to');
-    expect(result[3][1][0]).toBe('empty');
-    expect(result[3][1][1]).toBe('file');
-    expect(result[3][1][2]).toBe('other.txt');
+    expect(recursiveResult.length).toBe(4);
+    expect(recursiveResult[0][0]).toBe('./.temp/executeOnFolders/empty/folder');
+    expect(recursiveResult[1][0]).toBe('./.temp/executeOnFolders/empty');
+    expect(recursiveResult[1][1][0]).toBe('folder');
 
-    expect(result[4][0]).toBe('./.temp/path');
-    expect(result[4][1][0]).toBe('to');
+    expect(recursiveResult[2][0]).toBe('./.temp/executeOnFolders/file');
+    expect(recursiveResult[2][1][0]).toBe('test.txt');
+
+    expect(recursiveResult[3][0]).toBe('./.temp/executeOnFolders');
+    expect(recursiveResult[3][1][0]).toBe('empty');
+    expect(recursiveResult[3][1][1]).toBe('file');
+    expect(recursiveResult[3][1][2]).toBe('other.txt');
 });

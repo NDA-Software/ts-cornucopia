@@ -1,4 +1,4 @@
-import { mkdirSync, readFileSync, writeFileSync, rmSync } from 'fs';
+import { mkdirSync, readFileSync, writeFileSync, rmSync, existsSync } from 'fs';
 
 import { indexer } from '../../.build/scripts';
 
@@ -35,6 +35,10 @@ test('Testing indexer.', () => {
     mkdirSync(`${path}subFolder`, { recursive: true });
 
     indexer(path);
+
+    expect(existsSync(`${path}subFolder/index.ts`)).toBe(false);
+
+    indexer(path, { recursive: true });
 
     let result = readFileSync(`${path}index.ts`).toString();
 
