@@ -1,17 +1,21 @@
-# executeOnFiles (path: string, callback: function) - 1.0.0
+# executeOnFiles (path: string, callback: function, options: Options) - 2.0.0
 
 ## Description
 
-This function is used to iterate inside a directory and its inner directories (recursively) and then execute a function with the path of each folder found, including the root folder of the execution.
+This function is used to iterate inside a directory and then execute a function with the path of each folder found, including the root folder of the execution.
 
 ## Parameters
 
-- path: Path to the directory to be iterated.
-- callback: A function that should receive the path to a folder and an array of strings with the name of all files inside the folder as its parameters.
+-   path: Path to the directory to be iterated.
+-   callback: A function that should receive the path to a folder and an array of strings with the name of all files inside the folder as its parameters.
+
+## Options
+
+-   recursive (Default: false): When set to true this will repeat its function recursively in all folders inside the starting path.
 
 ## Returned Value
 
-- Array<any>: An array with everything returned by the callback function passed as parameter.
+-   Array<any>: An array with everything returned by the callback function passed as parameter.
 
 ## Usage:
 

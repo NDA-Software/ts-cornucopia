@@ -1,6 +1,6 @@
 {
     "name": "ts-cornucopia",
-    "version": "1.1.1",
+    "version": "2.0.0",
     "description": "A package to organize small pieces of code easy to use in many projects.",
     "repository": "git@github.com:NDA-Software/ts-cornucopia.git",
     "author": "Herr Turing <admin@nda.software>",

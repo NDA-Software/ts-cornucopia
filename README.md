@@ -26,9 +26,9 @@ To simplify this section, each separate function will have its own documentation
 
 ### File
 
--   [executeOnFiles](docs/file/executeOnFiles.md): This function is used to iterate inside a directory and its inner directories (recursively) and then execute a function with the path of each file found inside.
+-   [executeOnFiles](docs/file/executeOnFiles.md): This function is used to iterate inside a directory (recursivity as an option) and then execute a function with the path of each file found inside.
 
--   [executeOnFolders](docs/file/executeOnFolders.md): This function is used to iterate inside a directory and its inner directories (recursively) and then execute a function with the path of each folder found, including the root folder of the execution.
+-   [executeOnFolders](docs/file/executeOnFolders.md): This function is used to iterate inside a directory (recursivity as an option) and then execute a function with the path of each folder found, including the root folder of the execution.
 
 -   [proccessTemplate](docs/file/proccessTemplate.md): This function reads a file, replaces all iterations of named placeholders with values passed.
 
@@ -40,7 +40,7 @@ To simplify this section, each separate function will have its own documentation
 
 ### Scripts
 
--   [indexer](docs/scripts/indexer.md): This function will generate a index file that imports and exports all other files of the same folder. This is always recursive.
+-   [indexer](docs/scripts/indexer.md): This function will generate a index file that imports and exports all other files of the same folder.
 
 ### String
 
