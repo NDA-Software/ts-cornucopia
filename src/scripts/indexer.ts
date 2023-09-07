@@ -10,6 +10,7 @@ export interface indexerOptions {
     overwriteBaseText?: string | null;
     indexExtension?: 'ts' | 'js';
     nameCasing?: 'camelCase' | 'PascalCase';
+    recursive?: boolean
 }
 
 export default function (
@@ -18,7 +19,8 @@ export default function (
         ignoredFiles = null,
         overwriteBaseText = null,
         indexExtension = 'ts',
-        nameCasing = 'camelCase'
+        nameCasing = 'camelCase',
+        recursive = false
     }: indexerOptions = {}): void {
     if (typeof path === 'string')
         path = [path];
@@ -27,6 +29,8 @@ export default function (
 
     if (nameCasing === 'camelCase')
         finalNameFormat = (item: string, i: number) => i === 0 ? item : firstToUppercase(item);
+
+    const executionOptions = { recursive };
 
     for (const currentPath of path) {
         executeOnFolders(currentPath, async (currentFolder, files) => {
@@ -72,6 +76,6 @@ export default function (
                 readFileSync(indexFile).toString() !== text
             )
                 writeFileSync(indexFile, text);
-        });
+        }, executionOptions);
     }
 }

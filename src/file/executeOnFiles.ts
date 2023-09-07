@@ -2,7 +2,21 @@ import { readdirSync, statSync } from 'fs';
 
 type execCallback = (filePath: string) => any;
 
-const executeOnFiles = (folderPath: string, callback: execCallback): any[] => {
+export interface executeOnFilesOptions {
+    recursive?: boolean
+    skipFolders?: boolean
+}
+
+const executeOnFiles = (
+    folderPath: string,
+    callback: execCallback,
+    options: executeOnFilesOptions = {}
+): any[] => {
+    const {
+        recursive = false,
+        skipFolders = true
+    } = options;
+
     const lastIndex = folderPath.length - 1;
     const lastCharacter = folderPath.substring(lastIndex);
 
@@ -17,9 +31,11 @@ const executeOnFiles = (folderPath: string, callback: execCallback): any[] => {
         const filePath = `${folderPath}/${item}`;
 
         if (statSync(filePath).isDirectory()) {
-            responses = responses.concat(executeOnFiles(filePath, callback));
+            if (recursive)
+                responses = responses.concat(executeOnFiles(filePath, callback, options));
 
-            continue;
+            if (skipFolders)
+                continue;
         }
 
         responses.push(callback(filePath));
