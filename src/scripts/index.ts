@@ -1,8 +1,11 @@
 /* AUTO-GENERATED, DO NOT EDIT MANUALLY */
-import indexer from './indexer';
+import indexer, * as indexerNamed from './indexer';
 
-export { default as indexer } from './indexer';
+export { indexer };
+
+export * from './indexer';
 
 export default {
-    indexer
+    indexer,
+    ...indexerNamed
 };

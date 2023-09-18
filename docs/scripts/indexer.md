@@ -1,4 +1,4 @@
-# indexer (path: string, options: Options) - 2.0.0
+# indexer (path: string, options: indexerOptions) - 2.0.0
 
 ## Description
 

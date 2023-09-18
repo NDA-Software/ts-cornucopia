@@ -4,13 +4,13 @@ const defaultOptions = {
     decimalPlaces: 2
 };
 
-export interface Options {
+export interface numberFormatOptions {
     thousandSeparator?: string,
     decimalSeparator?: string,
     decimalPlaces?: number,
 }
 
-const numberFormat = (amount: number, options: Options = {}): string => {
+const numberFormat = (amount: number, options: numberFormatOptions = {}): string => {
     const { thousandSeparator, decimalSeparator, decimalPlaces } = { ...defaultOptions, ...options };
 
     const amountWithDecimals = amount.toFixed(decimalPlaces);

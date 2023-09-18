@@ -1,4 +1,4 @@
-# executeOnFiles (path: string, callback: function, options: Options) - 1.0.0
+# executeOnFiles (path: string, callback: function, options: executeOnFilesOptions) - 1.0.0
 
 ## Description
 
@@ -28,7 +28,7 @@ This function is used to iterate inside a directory and then execute a function 
 
 import { executeOnFiles } from "ts-cornucopia/file";
 
-const result = executeOnFiles("/path", (file) => file);
+const result = executeOnFiles("/path", (file) => file, { recursive: true });
 
 console.log(result);
 // [

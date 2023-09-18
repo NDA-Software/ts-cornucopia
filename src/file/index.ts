@@ -1,14 +1,21 @@
 /* AUTO-GENERATED, DO NOT EDIT MANUALLY */
-import executeOnFiles from './executeOnFiles';
-import executeOnFolders from './executeOnFolders';
-import proccessTemplate from './proccessTemplate';
+import executeOnFiles, * as executeOnFilesNamed from './executeOnFiles';
+import executeOnFolders, * as executeOnFoldersNamed from './executeOnFolders';
+import proccessTemplate, * as proccessTemplateNamed from './proccessTemplate';
 
-export { default as executeOnFiles } from './executeOnFiles';
-export { default as executeOnFolders } from './executeOnFolders';
-export { default as proccessTemplate } from './proccessTemplate';
+export { executeOnFiles };
+export { executeOnFolders };
+export { proccessTemplate };
+
+export * from './executeOnFiles';
+export * from './executeOnFolders';
+export * from './proccessTemplate';
 
 export default {
     executeOnFiles,
     executeOnFolders,
-    proccessTemplate
+    proccessTemplate,
+    ...executeOnFilesNamed,
+    ...executeOnFoldersNamed,
+    ...proccessTemplateNamed
 };

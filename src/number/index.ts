@@ -1,11 +1,16 @@
 /* AUTO-GENERATED, DO NOT EDIT MANUALLY */
-import numberFormat from './numberFormat';
-import randomRange from './randomRange';
+import numberFormat, * as numberFormatNamed from './numberFormat';
+import randomRange, * as randomRangeNamed from './randomRange';
 
-export { default as numberFormat } from './numberFormat';
-export { default as randomRange } from './randomRange';
+export { numberFormat };
+export { randomRange };
+
+export * from './numberFormat';
+export * from './randomRange';
 
 export default {
     numberFormat,
-    randomRange
+    randomRange,
+    ...numberFormatNamed,
+    ...randomRangeNamed
 };

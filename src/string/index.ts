@@ -1,11 +1,16 @@
 /* AUTO-GENERATED, DO NOT EDIT MANUALLY */
-import cammelToSpace from './cammelToSpace';
-import firstToUppercase from './firstToUppercase';
+import cammelToSpace, * as cammelToSpaceNamed from './cammelToSpace';
+import firstToUppercase, * as firstToUppercaseNamed from './firstToUppercase';
 
-export { default as cammelToSpace } from './cammelToSpace';
-export { default as firstToUppercase } from './firstToUppercase';
+export { cammelToSpace };
+export { firstToUppercase };
+
+export * from './cammelToSpace';
+export * from './firstToUppercase';
 
 export default {
     cammelToSpace,
-    firstToUppercase
+    firstToUppercase,
+    ...cammelToSpaceNamed,
+    ...firstToUppercaseNamed
 };

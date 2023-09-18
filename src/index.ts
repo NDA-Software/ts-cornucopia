@@ -4,10 +4,10 @@ import number from './number';
 import scripts from './scripts';
 import string from './string';
 
-export { default as file } from './file';
-export { default as number } from './number';
-export { default as scripts } from './scripts';
-export { default as string } from './string';
+export { file };
+export { number };
+export { scripts };
+export { string };
 
 export default {
     file,
