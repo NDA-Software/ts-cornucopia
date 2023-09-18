@@ -11,11 +11,12 @@ This function's objective is to create an index file that imports all other file
 
 ## Options
 
--   ignoredFiles (Default: null): An array with file names that should not be indexed.
--   overwriteBaseText (Default: null): An string to overwrite the comment that is added to the start of every file.
--   indexExtension (Default: 'ts'): Decides the extension of the index files generated.
--   nameCasing (Default: 'camelCase'): Decides between 'camelCase' or 'PascalCase' the pattern in which the index files will name the exported indexed files.
--   recursive (Default: false): When set to true this will repeat its function recursively in all folders inside the starting path.
+-   ignoredFiles (string[], Default: null): An array with file names that should not be indexed.
+-   overwriteBaseText (string, Default: null): An string to overwrite the comment that is added to the start of every file.
+-   indexExtension ('ts' | 'js', Default: 'ts'): Decides the extension of the index files generated.
+-   nameCasing ('camelCase' | 'PascalCase', Default: 'camelCase'): Decides between 'camelCase' or 'PascalCase' the pattern in which the index files will name the exported indexed files.
+-   recursive (boolean, Default: false): When set to true this will repeat its function recursively in all folders inside the starting path.
+-   exportMode ('named' | 'default' | 'mixed', Default: 'mixed'): This defines what type of data should be indexed. The value "default" refers to the information exported with "export default" therefore it will not import nor export any named information. With the "named" option, this will index all named exports and with "mixed" it will do both.
 
 ## Returned Value
 
