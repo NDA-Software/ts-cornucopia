@@ -10,7 +10,8 @@ export interface indexerOptions {
     overwriteBaseText?: string | null;
     indexExtension?: 'ts' | 'js';
     nameCasing?: 'camelCase' | 'PascalCase';
-    recursive?: boolean
+    recursive?: boolean,
+    exportMode?: 'named' | 'default' | 'mixed'
 }
 
 export default function (
@@ -20,7 +21,8 @@ export default function (
         overwriteBaseText = null,
         indexExtension = 'ts',
         nameCasing = 'camelCase',
-        recursive = false
+        recursive = false,
+        exportMode = 'mixed'
     }: indexerOptions = {}): void {
     if (typeof path === 'string')
         path = [path];
@@ -42,8 +44,12 @@ export default function (
                 .filter((file) => file.toLowerCase() !== 'index');
 
             let importText = '\n';
-            let individualExportText = '\n';
+
+            let individualDefaultExportText = '\n';
+            let individualNamedExportText = exportMode === 'mixed' ? '\n' : '';
+
             let defaultExportText = '\nexport default {\n';
+            let namedExportText = '';
 
             let firstExport = true;
             for (const file of files) {
@@ -55,19 +61,46 @@ export default function (
                     .map(finalNameFormat)
                     .join('');
 
-                importText += `import ${finalName} from './${file}';\n`;
+                let newImportText = '';
+                switch (exportMode) {
+                    case 'default':
+                        newImportText = `${finalName}`;
 
-                individualExportText += `export { default as ${finalName} } from './${file}';\n`;
+                        individualDefaultExportText += `export { ${finalName} };\n`;
 
-                defaultExportText += `${!firstExport ? ',\n' : ''}    ${finalName}`;
+                        defaultExportText += `${!firstExport ? ',\n' : ''}    ${finalName}`;
+                        break;
+
+                    case 'named':
+                        newImportText += `* as ${finalName}`;
+
+                        individualDefaultExportText += `export * from './${file}';\n`;
+
+                        defaultExportText += `${!firstExport ? ',\n' : ''}    ...${finalName}`;
+                        break;
+
+                    case 'mixed':
+                        newImportText = `${finalName}, * as ${finalName}Named`;
+
+                        individualDefaultExportText += `export { ${finalName} };\n`;
+                        individualNamedExportText += `export * from './${file}';\n`;
+
+                        defaultExportText += `${!firstExport ? ',\n' : ''}    ${finalName}`;
+                        namedExportText += `,\n    ...${finalName}Named`;
+                        break;
+                }
+
+                importText += `import ${newImportText} from './${file}';\n`;
 
                 firstExport = false;
             }
 
+            defaultExportText += namedExportText;
             defaultExportText += '\n};\n';
 
             text += importText;
-            text += individualExportText;
+            text += individualDefaultExportText;
+            text += individualNamedExportText;
             text += defaultExportText;
 
             const indexFile = `${currentFolder}/index.${indexExtension}`;

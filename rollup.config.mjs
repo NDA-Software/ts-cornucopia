@@ -16,7 +16,7 @@ export default [{
         format: 'esm'
     }],
     plugins: [
-        indexer("./src"),
+        indexer("./src", { recursive: true }),
         typescript({
             tsconfig: 'tsconfig.json',
             outDir: '.build/',
