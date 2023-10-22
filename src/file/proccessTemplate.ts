@@ -3,9 +3,12 @@ import fs from 'fs';
 const proccessTemplate = (templateFile: string, dataToOverwrite: Record<string, string> = {}): string => {
     let templateText = fs.readFileSync(templateFile).toString();
 
-    for (const key in dataToOverwrite)
-        if (Object.hasOwn(dataToOverwrite, key) && key !== undefined)
-            templateText = templateText.replaceAll(`{{${key.toUpperCase()}}}`, dataToOverwrite[key] ?? '');
+    for (const key in dataToOverwrite) {
+        const searchString = `{{${key.toUpperCase()}}}`;
+
+        while (templateText.includes(searchString))
+            templateText = templateText.replace(searchString, dataToOverwrite[key] ?? '');
+    }
 
     return templateText;
 };

@@ -1,4 +1,4 @@
-import { cammelToSpace } from '../../.build/string';
+import { cammelToSpace } from '../../src/string';
 
 test('Testing cammelToSpace.', () => {
     expect(cammelToSpace('manyWordsTest')).toBe('Many Words Test');

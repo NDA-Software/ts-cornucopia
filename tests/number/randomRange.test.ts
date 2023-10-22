@@ -1,4 +1,4 @@
-import { randomRange } from '../../.build/number';
+import { randomRange } from '../../src/number';
 
 test('Testing randomRange.', () => {
     let smallerResult = 9999;
