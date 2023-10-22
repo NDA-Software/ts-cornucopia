@@ -6,7 +6,7 @@ const testPath = './tests';
 const docPath = './docs';
 
 executeOnFiles('./src', (filePath) => {
-    if (filePath.includes('index.ts'))
+    if (filePath.includes('index.ts') as boolean)
         return null;
 
     const partialFilePath = filePath.substring(5, filePath.length - 3);
