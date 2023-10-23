@@ -3,7 +3,7 @@
     "main": "./dist/cjs/index.cjs",
     "module": "./dist/esm/index.mjs",
     "type": "module",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "description": "A package to organize small pieces of code easy to use in many projects.",
     "repository": "git@github.com:NDA-Software/ts-cornucopia.git",
     "author": "HerrTuring <admin@nda.software>",
@@ -29,28 +29,42 @@
     "exports": {
         ".": {
             "require": "./dist/cjs/index.cjs",
-            "import": "./dist/esm/index.mjs",
-            "types": "./dist/types/index.d.ts"
+            "import": "./dist/esm/index.mjs"
         },
         "./file": {
             "require": "./dist/cjs/file/index.cjs",
-            "import": "./dist/esm/file/index.mjs",
-            "types": "./dist/types/file/index.d.ts"
+            "import": "./dist/esm/file/index.mjs"
         },
         "./number": {
             "require": "./dist/cjs/number/index.cjs",
-            "import": "./dist/esm/number/index.mjs",
-            "types": "./dist/types/number/index.d.ts"
+            "import": "./dist/esm/number/index.mjs"
         },
         "./scripts": {
             "require": "./dist/cjs/scripts/index.cjs",
-            "import": "./dist/esm/scripts/index.mjs",
-            "types": "./dist/types/scripts/index.d.ts"
+            "import": "./dist/esm/scripts/index.mjs"
         },
         "./string": {
             "require": "./dist/cjs/string/index.cjs",
-            "import": "./dist/esm/string/index.mjs",
-            "types": "./dist/types/string/index.d.ts"
+            "import": "./dist/esm/string/index.mjs"
+        }
+    },
+    "typesVersions": {
+        "*": {
+            "*": [
+                "./dist/types/index.d.ts"
+            ],
+            "file": [
+                "./dist/types/file/index.d.ts"
+            ],
+            "number": [
+                "./dist/types/number/index.d.ts"
+            ],
+            "scripts": [
+                "./dist/types/scripts/index.d.ts"
+            ],
+            "string": [
+                "./dist/types/string/index.d.ts"
+            ]
         }
     },
     "devDependencies": {
