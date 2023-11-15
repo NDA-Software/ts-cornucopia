@@ -6,17 +6,17 @@ This function is used to iterate inside a directory and then execute a function 
 
 ## Parameters
 
--   path: Path to the directory to be iterated.
--   callback: A function that should receive the path to a file as its parameter.
+- path: Path to the directory to be iterated.
+- callback: A function that should receive the path to a file as its parameter.
 
 ## Options
 
--   recursive (Default: false): When set to true this will repeat its function recursively in all folders inside the starting path.
--   skipFolders (Default: true): As default this prevents folders from being threated as files, if this is set to false, the callback will also be called with all the folders. This does not prevent recursivity of recursive is set to true, both will happen.
+- recursive (Default: false): When set to true this will repeat its function recursively in all folders inside the starting path.
+- skipFolders (Default: true): As default this prevents folders from being threated as files, if this is set to false, the callback will also be called with all the folders. This does not prevent recursivity, if recursive is set to true, both will happen.
 
 ## Returned Value
 
--   Array<any>: An array with everything returned by the callback function passed as parameter.
+- Array<any>: An array with everything returned by the callback function passed as parameter.
 
 ## Usage:
 
