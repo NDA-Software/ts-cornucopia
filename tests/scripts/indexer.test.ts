@@ -68,15 +68,21 @@ test('Testing indexer.', () => {
 
     writeFileSync(`${path}item1.ts`, '');
     writeFileSync(`${path}item2.ts`, '');
+    writeFileSync(`${path}fileToIgnore.ts`, '');
 
     mkdirSync(`${path}subFolder`, { recursive: true });
+
+    mkdirSync(`${path}folderToIgnore/`, { recursive: true });
+    writeFileSync(`${path}folderToIgnore/item1.ts`, '');
+
+    const ignoredFiles = ['fileToIgnore', 'folderToIgnore'];
 
     try {
         indexer(path);
 
         expect(existsSync(`${path}subFolder/index.ts`)).toBe(false);
 
-        indexer(path, { recursive: true, exportMode: 'default' });
+        indexer(path, { recursive: true, exportMode: 'default', ignoredFiles });
 
         let result = readFileSync(`${path}index.ts`).toString();
 
@@ -86,17 +92,19 @@ test('Testing indexer.', () => {
 
         expect(result).toBe(innerResult);
 
-        indexer(path, { exportMode: 'named' });
+        indexer(path, { exportMode: 'named', ignoredFiles });
 
         result = readFileSync(`${path}index.ts`).toString();
 
         expect(result).toBe(namedResult);
 
-        indexer(path, { exportMode: 'mixed' });
+        indexer(path, { exportMode: 'mixed', ignoredFiles });
 
         result = readFileSync(`${path}index.ts`).toString();
 
         expect(result).toBe(mixedResult);
+
+        expect(existsSync(`${path}folderToIgnore/index.ts`)).toBe(false);
     } finally {
         rmSync(path, { recursive: true });
     }
