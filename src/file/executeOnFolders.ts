@@ -29,10 +29,14 @@ const executeOnFolders = (
 
     let responses: any[] = [];
 
-    for (const item of folder) {
-        if (ignoredFiles.includes(item))
-            continue;
+    for (const ignoredFile of ignoredFiles) {
+        const index = folder.indexOf(ignoredFile);
 
+        if (index !== -1)
+            folder.splice(index, 1);
+    }
+
+    for (const item of folder) {
         const filePath = `${folderPath}/${item}`;
 
         if (recursive && statSync(filePath).isDirectory())

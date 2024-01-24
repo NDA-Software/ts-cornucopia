@@ -10,21 +10,21 @@ const createDir = (folderPath: string): void => {
 };
 
 test('Testing executeOnFiles.', () => {
-    let path = './.temp/executeOnFiles';
+    const path = './.temp/executeOnFiles';
 
     createDir(`${path}/empty/folder`);
 
     appendFileSync(`${path}/other.txt`, '');
+    appendFileSync(`${path}/fileToBeIgnored.txt`, '');
 
-    path += '/file';
-    createDir(path);
+    createDir(`${path}/file`);
+    appendFileSync(`${path}/file/test.txt`, '');
 
-    path += '/test.txt';
-    appendFileSync(path, '');
+    const ignoredFiles = 'fileToBeIgnored.txt';
 
-    const result = executeOnFiles('./.temp/executeOnFiles/', (filePath) => filePath);
-    const recursiveResult = executeOnFiles('./.temp/executeOnFiles/', (filePath) => filePath, { recursive: true });
-    const withoutSkipResult = executeOnFiles('./.temp/executeOnFiles/', (filePath) => filePath, { skipFolders: false });
+    const result = executeOnFiles('./.temp/executeOnFiles/', (filePath) => filePath, { ignoredFiles });
+    const recursiveResult = executeOnFiles('./.temp/executeOnFiles/', (filePath) => filePath, { recursive: true, ignoredFiles });
+    const withoutSkipResult = executeOnFiles('./.temp/executeOnFiles/', (filePath) => filePath, { skipFolders: false, ignoredFiles });
 
     rmSync('./.temp/executeOnFiles/', { recursive: true });
 
