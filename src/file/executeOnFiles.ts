@@ -4,7 +4,8 @@ type execCallback = (filePath: string) => any;
 
 export interface executeOnFilesOptions {
     recursive?: boolean
-    skipFolders?: boolean
+    skipFolders?: boolean,
+    ignoredFiles?: string | string[]
 }
 
 const executeOnFiles = (
@@ -17,6 +18,11 @@ const executeOnFiles = (
         skipFolders = true
     } = options;
 
+    let { ignoredFiles = [] } = options;
+
+    if (typeof ignoredFiles === 'string')
+        ignoredFiles = [ignoredFiles];
+
     const lastIndex = folderPath.length - 1;
     const lastCharacter = folderPath.substring(lastIndex);
 
@@ -28,6 +34,9 @@ const executeOnFiles = (
     let responses: any[] = [];
 
     for (const item of folder) {
+        if (ignoredFiles.includes(item))
+            continue;
+
         const filePath = `${folderPath}/${item}`;
 
         if (statSync(filePath).isDirectory()) {

@@ -3,7 +3,8 @@ import { readdirSync, statSync } from 'fs';
 type execCallback = (filePath: string, folderContent: string[]) => any;
 
 export interface executeOnFoldersOptions {
-    recursive?: boolean
+    recursive?: boolean,
+    ignoredFiles?: string | string[]
 }
 
 const executeOnFolders = (
@@ -12,6 +13,11 @@ const executeOnFolders = (
     options: executeOnFoldersOptions = {}
 ): any[] => {
     const { recursive = false } = options;
+
+    let { ignoredFiles = [] } = options;
+
+    if (typeof ignoredFiles === 'string')
+        ignoredFiles = [ignoredFiles];
 
     const lastIndex = folderPath.length - 1;
     const lastCharacter = folderPath.substring(lastIndex);
@@ -24,6 +30,9 @@ const executeOnFolders = (
     let responses: any[] = [];
 
     for (const item of folder) {
+        if (ignoredFiles.includes(item))
+            continue;
+
         const filePath = `${folderPath}/${item}`;
 
         if (recursive && statSync(filePath).isDirectory())
