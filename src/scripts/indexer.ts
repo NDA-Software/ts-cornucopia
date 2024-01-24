@@ -6,7 +6,7 @@ import { executeOnFolders } from '../file';
 const baseText = '/* AUTO-GENERATED, DO NOT EDIT MANUALLY */';
 
 export interface indexerOptions {
-    ignoredFiles?: string[] | null;
+    ignoredFiles?: string | string[];
     overwriteBaseText?: string | null;
     indexExtension?: 'ts' | 'js';
     nameCasing?: 'camelCase' | 'PascalCase';
@@ -17,7 +17,7 @@ export interface indexerOptions {
 export default function (
     path: string | string[],
     {
-        ignoredFiles = null,
+        ignoredFiles = [],
         overwriteBaseText = null,
         indexExtension = 'ts',
         nameCasing = 'camelCase',
@@ -27,12 +27,15 @@ export default function (
     if (typeof path === 'string')
         path = [path];
 
+    if (typeof ignoredFiles === 'string')
+        ignoredFiles = [ignoredFiles];
+
     let finalNameFormat = (item: string, _: number): string => firstToUppercase(item);
 
     if (nameCasing === 'camelCase')
         finalNameFormat = (item: string, i: number) => i === 0 ? item : firstToUppercase(item);
 
-    const executionOptions = { recursive };
+    const executionOptions = { recursive, ignoredFiles };
 
     for (const currentPath of path) {
         executeOnFolders(currentPath, async (currentFolder, files) => {
@@ -53,7 +56,7 @@ export default function (
 
             let firstExport = true;
             for (const file of files) {
-                if (ignoredFiles !== null && ignoredFiles.includes(file))
+                if (ignoredFiles.includes(file))
                     continue;
 
                 const finalName = file
