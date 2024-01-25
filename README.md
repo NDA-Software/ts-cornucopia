@@ -8,11 +8,11 @@ The idea came after tinkering for some years with different approaches to sharin
 
 ## Table of Contents
 
--   [Installation](#installation)
--   [Usage](#usage)
--   [Tests](#tests)
--   [Contributing](/CONTRIBUTING.md)
--   [License](/LICENSE.md)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Tests](#tests)
+- [Contributing](/CONTRIBUTING.md)
+- [License](/LICENSE.md)
 
 ## Installation
 
@@ -26,27 +26,27 @@ To simplify this section, each separate function will have its own documentation
 
 ### File
 
--   [executeOnFiles](docs/file/executeOnFiles.md): This function is used to iterate inside a directory (recursivity as an option) and then execute a function with the path of each file found inside.
+- [executeOnFiles](docs/file/executeOnFiles.md): This function is used to iterate inside a directory (recursivity as an option) and then execute a function with the path of each file found inside.
 
--   [executeOnFolders](docs/file/executeOnFolders.md): This function is used to iterate inside a directory (recursivity as an option) and then execute a function with the path of each folder found, including the root folder of the execution.
+- [executeOnFolders](docs/file/executeOnFolders.md): This function is used to iterate inside a directory (recursivity as an option) and then execute a function with the path of each folder found, including the root folder of the execution.
 
--   [proccessTemplate](docs/file/proccessTemplate.md): This function reads a file, replaces all iterations of named placeholders with values passed.
+- [proccessTemplate](docs/file/proccessTemplate.md): This function reads a file, replaces all iterations of named placeholders with values passed.
 
 ### Number
 
--   [numberFormat](docs/number/numberFormat.md): This function converts a number into a string and adds a separator every three integer digits.
+- [numberFormat](docs/number/numberFormat.md): This function converts a number into a string and adds a separator every three integer digits.
 
--   [randomRange](docs/number/randomRange.md): This function returns a random integer between two values.
+- [randomRange](docs/number/randomRange.md): This function returns a random integer between two values.
 
 ### Scripts
 
--   [indexer](docs/scripts/indexer.md): This function will generate a index file that imports and exports all other files of the same folder.
+- [indexer](docs/scripts/indexer.md): This function will generate a index file that imports and exports all other files of the same folder.
 
 ### String
 
--   [cammelToSpace](docs/string/cammelToSpace.md): This function detects cammelcase and adds a space behind every word, it also adds uppercase to the first letter of the first word.
+- [cammelToSpace](docs/string/cammelToSpace.md): This function detects cammelcase and adds a space behind every word, it also adds uppercase to the first letter of the first word.
 
--   [firstToUppercase](docs/string/firstToUppercase.md): This function returns the given string with the changed first letter to be uppercase.
+- [firstToUppercase](docs/string/firstToUppercase.md): This function returns the given string with the changed first letter to be uppercase.
 
 ## Tests
 
@@ -57,3 +57,9 @@ npm run build
 
 npm run test
 ```
+
+## Roadmap
+
+- 4.0.0:
+  - Merge of executeOnFolders and executeOnFiles into a single function since there is too much overlap between the two and a few extra options could be added to make the final function have returns on par with both situations.
+  - Creation of executeOnFilesSync and conversion of executeOnFiles into an async function so the final function is more similar to "fs"'s patterns.

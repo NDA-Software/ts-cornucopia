@@ -12,6 +12,7 @@ This function is used to iterate inside a directory and then execute a function 
 ## Options
 
 - recursive (Default: false): When set to true this will repeat its function recursively in all folders inside the starting path.
+- ignoredFiles (string | string[]): String or array of strings, any file listed in this (exact name without path) will not be considered for the execution of the callback. In case that recursive is set to true this will also prevent from a folder listed in this to be entered.
 
 ## Returned Value
 
