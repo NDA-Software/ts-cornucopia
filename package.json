@@ -3,7 +3,7 @@
     "main": "./dist/cjs/index.cjs",
     "module": "./dist/esm/index.mjs",
     "type": "module",
-    "version": "3.1.0",
+    "version": "3.1.1",
     "description": "A package to organize small pieces of code easy to use in many projects.",
     "repository": "git@github.com:NDA-Software/ts-cornucopia.git",
     "author": "HerrTuring <admin@nda.software>",
@@ -29,23 +29,28 @@
     "exports": {
         ".": {
             "require": "./dist/cjs/index.cjs",
-            "import": "./dist/esm/index.mjs"
+            "import": "./dist/esm/index.mjs",
+            "types": "./dist/types/index.d.ts"
         },
         "./file": {
             "require": "./dist/cjs/file/index.cjs",
-            "import": "./dist/esm/file/index.mjs"
+            "import": "./dist/esm/file/index.mjs",
+            "types": "./dist/types/file/index.d.ts"
         },
         "./number": {
             "require": "./dist/cjs/number/index.cjs",
-            "import": "./dist/esm/number/index.mjs"
+            "import": "./dist/esm/number/index.mjs",
+            "types": "./dist/types/number/index.d.ts"
         },
         "./scripts": {
             "require": "./dist/cjs/scripts/index.cjs",
-            "import": "./dist/esm/scripts/index.mjs"
+            "import": "./dist/esm/scripts/index.mjs",
+            "types": "./dist/types/scripts/index.d.ts"
         },
         "./string": {
             "require": "./dist/cjs/string/index.cjs",
-            "import": "./dist/esm/string/index.mjs"
+            "import": "./dist/esm/string/index.mjs",
+            "types": "./dist/types/string/index.d.ts"
         }
     },
     "typesVersions": {
